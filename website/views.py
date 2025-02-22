@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm
 from .models import Record
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -33,6 +34,7 @@ def login_user(request):
 
 
 # logout
+@csrf_exempt
 def logout_user(request):
     logout(request)
     messages.info(request, "You Have Been Logout..!!")
@@ -60,6 +62,7 @@ def register_user(request):
     
     
 # customer record
+@csrf_exempt
 def customer_record(request, pk):
     if request.user.is_authenticated:
         # Look Up Records
@@ -71,6 +74,7 @@ def customer_record(request, pk):
     
     
 # delete customer 
+@csrf_exempt
 def delete_record(request, pk):
     if request.user.is_authenticated:
         delete_it = Record.objects.get(id=pk)
@@ -98,6 +102,7 @@ def add_record(request):
         
         
 # Update Record
+@csrf_exempt
 def update_record(request, pk):
     if request.user.is_authenticated:
         current_record = Record.objects.get(id=pk)

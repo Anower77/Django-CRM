@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django-crm-8dwr.onrender.com, localhost:8000"]
+ALLOWED_HOSTS = ['django-crm-8dwr.onrender.com', 'localhost:8000', '127.0.0.1:8000/']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
